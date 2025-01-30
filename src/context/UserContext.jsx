@@ -20,7 +20,7 @@ const UserProvider = ({ children }) => {
   const logout = () => {
     localStorage.removeItem("user");
     setUser(initialUser);
-    console.log("User logged out!");
+    // console.log("User logged out!");
   };
 
   useEffect(() => {

@@ -20,6 +20,6 @@ export const handleApiError = (errCode) => {
 };
 
 export const handleNetworkError = () => {
-  console.log("axios error function called ");
+  // console.log("axios error function called ");
   alert("Check you internet connection and try again.");
 };

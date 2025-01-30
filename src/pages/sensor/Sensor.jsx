@@ -40,7 +40,7 @@ const Sensor = () => {
       } else if (error instanceof AxiosError && error.code === "ERR_NETWORK") {
         handleNetworkError();
       } else {
-        console.log("unexpected error when fetch sensor data : ", error);
+        // console.log("unexpected error when fetch sensor data : ", error);
       }
     }
   };
@@ -62,7 +62,7 @@ const Sensor = () => {
       );
 
       fetchSensorData();
-      console.log("sensor action updated ", updateRes);
+      // console.log("sensor action updated ", updateRes);
     } catch (error) {
       if (
         error instanceof AxiosError &&
@@ -75,7 +75,7 @@ const Sensor = () => {
       } else if (error instanceof AxiosError && error.code === "ERR_NETWORK") {
         handleNetworkError();
       } else {
-        console.log("unexpected error : ", error);
+        // console.log("unexpected error : ", error);
       }
     }
   };

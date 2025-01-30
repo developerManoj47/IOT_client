@@ -4,7 +4,7 @@ import React, { useEffect, useRef } from "react";
 const Video = () => {
   const canvasRef = useRef(null);
   const websocketUrl = import.meta.env.VITE_WEBSOCKET_URL;
-  console.log("websocket url :", websocketUrl);
+  // console.log("websocket url :", websocketUrl);
   useEffect(() => {
     const ws = new WebSocket(websocketUrl);
 

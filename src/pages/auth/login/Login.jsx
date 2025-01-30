@@ -105,15 +105,15 @@ const Login = () => {
         email: formData.email,
         password: formData.password,
       });
-      console.log("signup response : ", signinResponse);
+      // console.log("signup response : ", signinResponse);
       if (signinResponse.data.is_success) {
         setUserToLocalStorage(signinResponse.data.data);
-        console.log("user logged in successfully : ", signinResponse);
+        // console.log("user logged in successfully : ", signinResponse);
         setIsLoading(false);
         navigate("/");
       }
 
-      console.log("form validation success : ", formData);
+      // console.log("form validation success : ", formData);
     } catch (error) {
       if (
         error instanceof AxiosError &&
@@ -122,14 +122,14 @@ const Login = () => {
         if (error.response.data.error_code === "USER_NOT_FOUND") {
           alert(error.response.data.error_message);
         } else if (error.response.data.error_code === "INCORRECT_PASSWORD") {
-          console.log("INCORRECT_PASSWORD");
+          // console.log("INCORRECT_PASSWORD");
           window.alert(error.response.data.error_message);
         }
         handleApiError(error.response.data.error_code);
       } else if (error instanceof AxiosError && error.code === "ERR_NETWORK") {
         handleNetworkError();
       } else {
-        console.log("unexpected error : ", error);
+        // console.log("unexpected error : ", error);
       }
     }
   };

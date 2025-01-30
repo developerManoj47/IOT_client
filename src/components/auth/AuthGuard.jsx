@@ -9,7 +9,7 @@ const AuthGuard = ({ children }) => {
   useEffect(() => {
     // Check when the user is not authenticated
     if (!user?.isUser) {
-      console.log("User not authenticated, redirecting...");
+      // console.log("User not authenticated, redirecting...");
       navigate("/sign-in");
     }
   }, [user, navigate]); // Dependency array with user and navigate

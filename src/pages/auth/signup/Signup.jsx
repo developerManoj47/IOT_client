@@ -127,15 +127,15 @@ const Signup = () => {
         email: formData.email,
         password: formData.password,
       });
-      console.log("signup response : ", signupResponse);
+      // console.log("signup response : ", signupResponse);
       if (signupResponse.data.is_success) {
         setUserToLocalStorage(signupResponse.data.data);
-        console.log("user logged in successfully : ", signupResponse);
+        // console.log("user logged in successfully : ", signupResponse);
         setIsLoading(false);
         navigate("/");
       }
 
-      console.log("form validation success : ", formData);
+      // console.log("form validation success : ", formData);
     } catch (error) {
       if (error instanceof AxiosError && error.code === "ERR_BAD_REQUEST") {
         const data = error && error.response?.data;
@@ -151,7 +151,7 @@ const Signup = () => {
       } else if (error instanceof AxiosError && error.code === "ERR_NETWORK") {
         handleNetworkError();
       } else {
-        console.log("unexpected error : ", error);
+        // console.log("unexpected error : ", error);
       }
     }
   };

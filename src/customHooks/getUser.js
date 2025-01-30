@@ -8,7 +8,7 @@ const getUser = () => {
     user = JSON.parse(localStorage.getItem("user"));
     // console.log("user data : ", user);
     if (!user) {
-      console.log("user is not available");
+      // console.log("user is not available");
       isUser = false;
     } else if (Object.keys(user).length === 0) {
       isUser = false;

@@ -27,7 +27,7 @@ const Navbar = (props) => {
   const navigate = useNavigate();
   // const user = getUser();
   const { user, logout } = useContext(UserContext);
-  console.log("user in navbar :", user);
+  // console.log("user in navbar :", user);
   const drawerWidth = user.isUser ? 240 : 0;
 
   const logoutUser = () => {
