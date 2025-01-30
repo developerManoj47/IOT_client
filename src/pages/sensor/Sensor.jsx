@@ -19,6 +19,8 @@ import CircularProgressWithLabel from "../../components/common/circularProgress/
 
 const Sensor = () => {
   const [sensorList, setSensorList] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
   const apiInstance = useApiInstance();
 
   const fetchSensorData = async () => {
@@ -82,7 +84,7 @@ const Sensor = () => {
 
   return (
     <div>
-      {sensorList !== 0 &&
+      {!isLoading ? (
         sensorList.map((obj, index) => {
           return (
             <div
@@ -178,7 +180,10 @@ const Sensor = () => {
               )}
             </div>
           );
-        })}
+        })
+      ) : (
+        <div>Loading...</div>
+      )}
     </div>
   );
 };
