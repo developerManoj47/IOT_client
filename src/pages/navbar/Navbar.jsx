@@ -150,7 +150,7 @@ const Navbar = (props) => {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            IOT Project
+            Site Name : Jodh01
           </Typography>
         </Toolbar>
 

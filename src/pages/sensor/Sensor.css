@@ -1,0 +1,76 @@
+table {
+  height: auto;
+  width: 90%;
+  margin: auto;
+  border-collapse: collapse;
+  text-align: left;
+  /* border: outset; */
+}
+
+/* table.srt th {
+    position: relative;
+    } */
+button {
+  margin: 0;
+  padding: 1rem;
+  border: none;
+  /* background-color: red; */
+  text-align: left;
+  color: black;
+  font-size: 20px;
+}
+td {
+  padding: 0.4rem;
+  text-align: left;
+}
+tr {
+  border-bottom: 1px solid gainsboro;
+}
+table.srt th button {
+  width: 100%;
+  display: inline;
+  cursor: pointer;
+}
+
+table.srt th button span {
+  width: 100%;
+  padding: 1rem;
+  position: absolute;
+}
+
+table.srt tbody tr:nth-child(odd) {
+  /* background: gainsboro; */
+  color: black;
+}
+.cat_square {
+  width: 100px;
+}
+
+.sensor_section {
+  width: 100%;
+}
+
+@media (width > 1440px) {
+  .sensor_section {
+    display: flex;
+  }
+}
+
+.sensor_section div {
+  flex: 1;
+}
+
+.sensor_name,
+.sensor_time {
+  font-size: 16px;
+}
+
+.sensor_time_label {
+  font-size: 12px;
+  color: gray;
+}
+
+tr td:nth-child(2) {
+  font-size: 16px;
+  font-weight: bold;
+}

@@ -19,3 +19,18 @@ export const checkValidEmail = (email) => {
 
   return true;
 };
+
+export function formatTime(dateString) {
+  const date = new Date(dateString);
+
+  let hours = date.getHours();
+  const minutes = String(date.getMinutes()).padStart(2, "0");
+  const seconds = String(date.getSeconds()).padStart(2, "0");
+
+  const ampm = hours >= 12 ? "pm" : "am";
+
+  hours = hours % 12 || 12; // Convert to 12-hour format
+  hours = String(hours).padStart(2, "0");
+
+  return `${hours}:${minutes}:${seconds} ${ampm}`;
+}

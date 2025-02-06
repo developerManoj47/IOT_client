@@ -3,8 +3,8 @@ const apiRoutes = {
   signin: "/auth/signin", // body - email, password,
 
   getSensors: "/sensor",
-  updateAction: "/sensor/action", // params - sensor id | body -  currentState: bool
-  updateData: "/sensor/data", // params - sensor id | body - sensorData: (object which contains sensor data)
+  breach: "/breach",
+  action: "/action", // body - currentStatus, params - action_id
 };
 
 export default apiRoutes;
