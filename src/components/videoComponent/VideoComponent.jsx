@@ -41,9 +41,11 @@ const VideoComponent = ({ width }) => {
       <canvas
         ref={canvasRef}
         style={{
-          width: "100%",
+          width: "600px",
+          height: "300px",
           border: "1px solid black",
           borderRadius: "10px",
+          objectFit: "contain",
         }}
       />
     </div>
