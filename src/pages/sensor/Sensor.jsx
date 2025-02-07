@@ -6,7 +6,7 @@ import apiRoutes from "../../api/apiRoutes.js";
 import { AxiosError } from "axios";
 import { handleApiError, handleNetworkError } from "../../utils/handleError.js";
 import { Button, Switch } from "@mui/material";
-import { formatTime } from "../../utils/functions.js";
+import { formatDateTime, formatTime } from "../../utils/functions.js";
 
 const Sensor = () => {
   const [sensorList, setSensorList] = useState([]);
@@ -152,30 +152,41 @@ const Sensor = () => {
     });
   };
 
-  const downloadCSV = (sensorList) => {
-    const jsonData = sensorList.map((sensor) => {
-      return {
-        name: sensor.name,
-        battery: sensor.battery + "%",
-        data: sensor.data,
-      };
-    });
-    const csvHeader = ["Name,Battery %,Data Value,Data Unit"];
-    const csvRows = jsonData.map(
-      (item) =>
-        `${item.name},${item.battery},${item.data.value},${item.data.unit}`
-    );
+  const downloadCSV = async (sensorList) => {
+    const sensorData = await apiInstance.get(apiRoutes.sensorData);
+    console.log("sensor data is here :", sensorData.data.data);
 
-    const csvContent = [csvHeader, ...csvRows].join("\n");
-    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
-    const url = URL.createObjectURL(blob);
+    for (const obj of sensorData.data.data) {
+      const sensor = sensorList.filter((sensorObj) => {
+        if (sensorObj._id === obj._id) {
+          return sensorObj;
+        }
+      });
 
-    const link = document.createElement("a");
-    link.href = url;
-    link.setAttribute("download", "sensor_data.csv");
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
+      const jsonData = obj.data.map((dataObj) => {
+        return {
+          time: formatDateTime(dataObj.timestamp),
+          data: dataObj.data,
+        };
+      });
+      console.log("sensor details : ", jsonData);
+
+      const csvHeader = ["Date time,Data Value,Data Unit"];
+      const csvRows = jsonData.map(
+        (item) => `${item.time},${item.data.value},${item.data.unit}`
+      );
+
+      const csvContent = [csvHeader, ...csvRows].join("\n");
+      const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+      const url = URL.createObjectURL(blob);
+
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", `${sensor[0].name}.csv`);
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
   };
 
   return (
